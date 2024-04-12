@@ -17,6 +17,26 @@ using namespace std;
 #include "headers/Nino.h"
 #include "DT/DTObjetoRoto.h"
 
+
+///////////////////////////////  NUEVO  ///////////////////////////////////////////
+void deleteObjetoRoto(Objeto *obj, vector<DTObjetoRoto*> &viejo_objRotos)
+{
+    if (obj->GetEstado() == Estado::Roto)
+    {
+        string nombreObj = obj->GetNombre();
+        delete obj;
+        vector<DTObjetoRoto> nuevo_objRotos;
+        for (int i = 0; i < (int)viejo_objRotos.size(); i++)
+        {
+            if (viejo_objRotos[i]->GetNombre() != nombreObj)
+                nuevo_objRotos.push_back(*viejo_objRotos[i]);
+        }
+        viejo_objRotos = nuevo_objRotos;
+    }
+}
+///////////////////////////////  NUEVO  ///////////////////////////////////////////
+
+
 int main() {
 
 	vector<Objeto*> objetos;
@@ -117,6 +137,33 @@ int main() {
 	        delete libro;
 	    }
 
+
+	    ///////////////////////////////  NUEVO  ///////////////////////////////////////////
+
+	    // Eliminamos uno de los objetos prestados a Alex
+	       cout << "Eliminamos el objeto " << objetos[3]->GetNombre() << endl;
+	       deleteObjetoRoto(objetos[3], objetosRotos);
+
+	       cout << endl;
+	       cout << endl;
+
+	       cout << "Objetos rotos luego de borrar un juego de mesa: " << endl;
+	       for (int i = 0; i < (int)objetosRotos.size(); i++)
+	       {
+	           cout << i << " - " << objetosRotos[i] << endl;
+	       }
+
+	       cout << endl;
+	       cout << endl;
+
+	       cout << "Objetos prestados a Alex luego de borrar un juego de mesa: " << endl;
+	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
+	       for (int j = 0; j < (int)objetosPrestadosNino1.size(); j++)
+	       {
+	           cout << j << " - " << objetosPrestadosNino1[j] << endl;
+	       }
+
+	       ///////////////////////////////  NUEVO  ///////////////////////////////////////////
 
 
 	return 0;
