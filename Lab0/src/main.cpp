@@ -25,12 +25,12 @@ void deleteObjetoRoto(Objeto *obj, vector<DTObjetoRoto*> &viejo_objRotos)
     {
         string nombreObj = obj->GetNombre();
         delete obj;
-        vector<DTObjetoRoto> nuevo_objRotos;
+        vector<DTObjetoRoto*> nuevo_objRotos;
         for (int i = 0; i < (int)viejo_objRotos.size(); i++)
         {
             if (viejo_objRotos[i]->GetNombre() != nombreObj)
-                nuevo_objRotos.push_back(*viejo_objRotos[i]);
-        }
+                nuevo_objRotos.push_back(viejo_objRotos[i]);//tengo dudas porque en el mio es sin * pero da error
+        }													//si no lo agrego aca, no lo pude probar porque no compila
         viejo_objRotos = nuevo_objRotos;
     }
 }
@@ -68,7 +68,8 @@ int main() {
 	    cout << objetos[4]->to_string() << endl;
 	    cout << objetos[5]->to_string() << endl;
 
-
+	    cout << endl;
+	    cout << endl;
 
 	    ninos[0]->agregarObjeto(objetos[0]); // FALTA APUNTAR OBJETOS A NINOS
 	    ninos[0]->agregarObjeto(objetos[1]);
@@ -89,6 +90,10 @@ int main() {
 	        cout << objeto << endl;
 	    }
 
+
+	    cout << endl;
+	    cout << endl;
+
 	    // Obtener la lista de objetos prestados para el segundo niño (ninos[1])
 	    vector<string> objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
 
@@ -97,6 +102,9 @@ int main() {
 	    for (const string& objeto : objetosPrestadosNino1) {
 	        cout << objeto << endl;
 	    }
+
+	    cout << endl;
+	    cout << endl;
 
 	    //g
 	    for (const Objeto* pObjeto : objetos) {
@@ -122,6 +130,7 @@ int main() {
 	            }
 	    }
 
+
 	    //Coutea objetos Rotos no va para la implementacion final solo para Test
 	    for (const DTObjetoRoto* pObjetoRoto : objetosRotos) {
 	        // Verificar si el puntero es válido
@@ -132,15 +141,13 @@ int main() {
 	        }
 	    }
 
-	    // Liberar memoria de los libros creados dinámicamente
-	    for (auto libro : objetos) {
-	        delete libro;
-	    }
 
-
+	    cout << endl;
+	    cout << endl;
 	    ///////////////////////////////  NUEVO  ///////////////////////////////////////////
 
 	    // Eliminamos uno de los objetos prestados a Alex
+
 	       cout << "Eliminamos el objeto " << objetos[3]->GetNombre() << endl;
 	       deleteObjetoRoto(objetos[3], objetosRotos);
 
@@ -150,21 +157,27 @@ int main() {
 	       cout << "Objetos rotos luego de borrar un juego de mesa: " << endl;
 	       for (int i = 0; i < (int)objetosRotos.size(); i++)
 	       {
-	           cout << i << " - " << objetosRotos[i] << endl;
+	           cout<< " - " << *objetosRotos[i] << endl;
 	       }
 
 	       cout << endl;
 	       cout << endl;
+
 
 	       cout << "Objetos prestados a Alex luego de borrar un juego de mesa: " << endl;
-	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
-	       for (int j = 0; j < (int)objetosPrestadosNino1.size(); j++)
-	       {
-	           cout << j << " - " << objetosPrestadosNino1[j] << endl;
-	       }
+	       	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
+	       	       for (int j = 0; j < (int)objetosPrestadosNino1.size(); j++)
+	       	       {
+	       	           cout<< " - " << objetosPrestadosNino1[j] << endl;
+	       	       }
 
 	       ///////////////////////////////  NUEVO  ///////////////////////////////////////////
 
+
+		    // Liberar memoria de los libros creados dinámicamente
+		    for (auto libro : objetos) {
+		        delete libro;
+		    }
 
 	return 0;
 }
