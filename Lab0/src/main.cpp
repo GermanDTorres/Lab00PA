@@ -29,8 +29,8 @@ void deleteObjetoRoto(Objeto *obj, vector<DTObjetoRoto*> &viejo_objRotos)
         for (int i = 0; i < (int)viejo_objRotos.size(); i++)
         {
             if (viejo_objRotos[i]->GetNombre() != nombreObj)
-                nuevo_objRotos.push_back(viejo_objRotos[i]);//tengo dudas porque en el mio es sin * pero da error
-        }													//si no lo agrego aca, no lo pude probar porque no compila
+                nuevo_objRotos.push_back(viejo_objRotos[i]);
+        }
         viejo_objRotos = nuevo_objRotos;
     }
 }
@@ -155,20 +155,24 @@ int main() {
 	       cout << endl;
 
 	       cout << "Objetos rotos luego de borrar un juego de mesa: " << endl;
-	       for (int i = 0; i < (int)objetosRotos.size(); i++)
-	       {
-	           cout<< " - " << *objetosRotos[i] << endl;
-	       }
+	       for (const DTObjetoRoto* pObjetoRoto : objetosRotos) {
+	       	        // Verificar si el puntero es válido
+	       	        if (pObjetoRoto != nullptr) {
+	       	            // Mostrar el nombre del objeto roto
+
+	       	            std::cout << *pObjetoRoto << std::endl;
+	       	        }
+	       	    }
 
 	       cout << endl;
 	       cout << endl;
 
 
 	       cout << "Objetos prestados a Alex luego de borrar un juego de mesa: " << endl;
-	       	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
+	       	       objetosPrestadosNino1 = ninos[0]->listarObjetosPrestados();
 	       	       for (int j = 0; j < (int)objetosPrestadosNino1.size(); j++)
 	       	       {
-	       	           cout<< " - " << objetosPrestadosNino1[j] << endl;
+	       	           cout<<objetosPrestadosNino1[j] << endl;
 	       	       }
 
 	       ///////////////////////////////  NUEVO  ///////////////////////////////////////////
