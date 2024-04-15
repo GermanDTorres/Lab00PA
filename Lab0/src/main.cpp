@@ -19,21 +19,7 @@ using namespace std;
 
 
 ///////////////////////////////  NUEVO  ///////////////////////////////////////////
-void deleteObjetoRoto(Objeto *obj, vector<DTObjetoRoto*> &viejo_objRotos)
-{
-    if (obj->GetEstado() == Estado::Roto)
-    {
-        string nombreObj = obj->GetNombre();
-        delete obj;
-        vector<DTObjetoRoto*> nuevo_objRotos;
-        for (int i = 0; i < (int)viejo_objRotos.size(); i++)
-        {
-            if (viejo_objRotos[i]->GetNombre() != nombreObj)
-                nuevo_objRotos.push_back(viejo_objRotos[i]);
-        }
-        viejo_objRotos = nuevo_objRotos;
-    }
-}
+
 ///////////////////////////////  NUEVO  ///////////////////////////////////////////
 
 
@@ -71,14 +57,18 @@ int main() {
 	    cout << endl;
 	    cout << endl;
 
-	    ninos[0]->agregarObjeto(objetos[0]); // FALTA APUNTAR OBJETOS A NINOS
+	    ninos[0]->agregarObjeto(objetos[0]);
 	    ninos[0]->agregarObjeto(objetos[1]);
-	    ninos[0]->agregarObjeto(objetos[3]);
-	    ninos[1]->agregarObjeto(objetos[4]);
-	    ninos[1]->agregarObjeto(objetos[5]);
+	    ninos[0]->agregarObjeto(objetos[5]);
+	    ninos[1]->agregarObjeto(objetos[3]);
+	    ninos[1]->agregarObjeto(objetos[2]);
 
 	    objetos[0]->AgregarNino(ninos[0]);
 	    objetos[1]->AgregarNino(ninos[0]);
+	    objetos[5]->AgregarNino(ninos[0]);
+
+	    objetos[2]->AgregarNino(ninos[1]);
+	    objetos[3]->AgregarNino(ninos[1]);
 
 
 
@@ -149,30 +139,47 @@ int main() {
 	    // Eliminamos uno de los objetos prestados a Alex
 
 	       cout << "Eliminamos el objeto " << objetos[3]->GetNombre() << endl;
-	       deleteObjetoRoto(objetos[3], objetosRotos);
+	       Objeto *obj = objetos[3];
+	       string nombreObj = obj->GetNombre();
+
+	       delete objetos[3];
+	               	       vector<Objeto*> nuevo_objetos;
+	               	       for (int i = 0; i < (int)objetos.size(); i++)
+	               	       {
+	               	            if (objetos[i]->GetNombre() != nombreObj)
+	               	            	nuevo_objetos.push_back(objetos[i]);
+	               	       }
+
+	               	    vector<DTObjetoRoto*> nuevo_objRotos;
+	               	            for (int i = 0; i < (int)objetosRotos.size(); i++)
+	               	            {
+	               	                if (objetosRotos[i]->GetNombre() != nombreObj)
+	               	                    nuevo_objRotos.push_back(objetosRotos[i]);
+	               	            }
+
+
+	               	    objetos = nuevo_objetos;
+	               	    objetosRotos = nuevo_objRotos;
 
 	       cout << endl;
 	       cout << endl;
+
 
 	       cout << "Objetos rotos luego de borrar un juego de mesa: " << endl;
-	       for (const DTObjetoRoto* pObjetoRoto : objetosRotos) {
-	       	        // Verificar si el puntero es válido
-	       	        if (pObjetoRoto != nullptr) {
-	       	            // Mostrar el nombre del objeto roto
-
-	       	            std::cout << *pObjetoRoto << std::endl;
-	       	        }
-	       	    }
+	           for (int i = 0; i < (int)objetosRotos.size(); i++)
+	           {
+	               cout << i << " - " << *objetosRotos[i] << endl;
+	           }
 
 	       cout << endl;
 	       cout << endl;
 
 
 	       cout << "Objetos prestados a Alex luego de borrar un juego de mesa: " << endl;
-	       objetosPrestadosNino0 = ninos[0]->listarObjetosPrestados();
+	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
 	       	       for (int j = 0; j < (int)objetosPrestadosNino0.size(); j++)
 	       	       {
-	       	           cout<<objetosPrestadosNino0[j] << endl;
+	       	           cout<<objetosPrestadosNino1[j] << endl;
 	       	       }
 
 	       ///////////////////////////////  NUEVO  ///////////////////////////////////////////
