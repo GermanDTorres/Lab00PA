@@ -169,10 +169,10 @@ int main() {
 
 
 	       cout << "Objetos prestados a Alex luego de borrar un juego de mesa: " << endl;
-	       	       objetosPrestadosNino1 = ninos[0]->listarObjetosPrestados();
-	       	       for (int j = 0; j < (int)objetosPrestadosNino1.size(); j++)
+	       objetosPrestadosNino0 = ninos[0]->listarObjetosPrestados();
+	       	       for (int j = 0; j < (int)objetosPrestadosNino0.size(); j++)
 	       	       {
-	       	           cout<<objetosPrestadosNino1[j] << endl;
+	       	           cout<<objetosPrestadosNino0[j] << endl;
 	       	       }
 
 	       ///////////////////////////////  NUEVO  ///////////////////////////////////////////
