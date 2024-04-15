@@ -57,9 +57,10 @@ int main() {
 	    cout << endl;
 	    cout << endl;
 
+	    ninos[0]->agregarObjeto(objetos[4]);
 	    ninos[0]->agregarObjeto(objetos[0]);
-	    ninos[0]->agregarObjeto(objetos[1]);
 	    ninos[0]->agregarObjeto(objetos[5]);
+
 	    ninos[1]->agregarObjeto(objetos[3]);
 	    ninos[1]->agregarObjeto(objetos[2]);
 
@@ -162,7 +163,7 @@ int main() {
 
 	               	    objetos = nuevo_objetos;
 	               	    objetosRotos = nuevo_objRotos;
-	               	 objetos[5]=nullptr;
+	               	    objetos[5]=nullptr;
 
 	       cout << endl;
 	       cout << endl;
@@ -177,15 +178,16 @@ int main() {
 	       cout << endl;
 	       cout << endl;
 
-
 	       cout << "Objetos prestados a Alex(2do nino) luego de borrar un juego de mesa: " << endl;
 	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
-	       	       for (int j = 0; j < (int)objetosPrestadosNino0.size(); j++)
+	       	       for (int j = 0; j < (int)objetosPrestadosNino1.size(); j++)
 	       	       {
 	       	           cout<<objetosPrestadosNino1[j] << endl;
 	       	       }
 
 	       ///////////////////////////////  NUEVO  ///////////////////////////////////////////
+
+
 
 
 		    // Liberar memoria de los libros creados dinámicamente
