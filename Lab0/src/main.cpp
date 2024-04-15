@@ -122,6 +122,7 @@ int main() {
 
 
 	    //Coutea objetos Rotos no va para la implementacion final solo para Test
+	    cout<<"Objetos rotos:"<<endl;
 	    for (const DTObjetoRoto* pObjetoRoto : objetosRotos) {
 	        // Verificar si el puntero es válido
 	        if (pObjetoRoto != nullptr) {
@@ -170,7 +171,7 @@ int main() {
 	       cout << "Objetos rotos luego de borrar un juego de mesa: " << endl;
 	           for (int i = 0; i < (int)objetosRotos.size(); i++)
 	           {
-	               cout << i << " - " << *objetosRotos[i] << endl;
+	               cout << *objetosRotos[i] << endl;
 	           }
 
 	       cout << endl;
