@@ -141,7 +141,7 @@ int main() {
 	       cout << "Eliminamos el objeto " << objetos[3]->GetNombre() << endl;
 	       Objeto *obj = objetos[3];
 	       string nombreObj = obj->GetNombre();
-
+	       ninos[1]->eliminoObjeto(objetos[3]);
 	       delete objetos[3];
 	               	       vector<Objeto*> nuevo_objetos;
 	               	       for (int i = 0; i < (int)objetos.size(); i++)
@@ -149,6 +149,7 @@ int main() {
 	               	            if (objetos[i]->GetNombre() != nombreObj)
 	               	            	nuevo_objetos.push_back(objetos[i]);
 	               	       }
+
 
 	               	    vector<DTObjetoRoto*> nuevo_objRotos;
 	               	            for (int i = 0; i < (int)objetosRotos.size(); i++)
@@ -160,6 +161,7 @@ int main() {
 
 	               	    objetos = nuevo_objetos;
 	               	    objetosRotos = nuevo_objRotos;
+	               	 objetos[5]=nullptr;
 
 	       cout << endl;
 	       cout << endl;
@@ -175,7 +177,7 @@ int main() {
 	       cout << endl;
 
 
-	       cout << "Objetos prestados a Alex luego de borrar un juego de mesa: " << endl;
+	       cout << "Objetos prestados a Alex(2do nino) luego de borrar un juego de mesa: " << endl;
 	       objetosPrestadosNino1 = ninos[1]->listarObjetosPrestados();
 	       	       for (int j = 0; j < (int)objetosPrestadosNino0.size(); j++)
 	       	       {
